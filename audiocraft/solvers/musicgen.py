@@ -668,6 +668,11 @@ class MusicGenSolver(base.StandardSolver):
                     kldiv.update(y_pred, y, sizes, sample_rates)
                 if text_consistency is not None:
                     texts = [m.description for m in meta]
+                    print(texts[:10])
+                    print(len(texts)]
+                    for text in texts:
+                        if type(text) != str:
+                          print(f'this one is wrong: {text}')
                     if self.cfg.metrics.text_consistency.use_gt:
                         y_pred = y
                     text_consistency.update(y_pred, texts, sizes, sample_rates)
